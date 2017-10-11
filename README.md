@@ -1,5 +1,5 @@
 # GoldCalculator
-黄金计算器，帮助计算各品台黄金投资的收益。</br>
+黄金计算器，帮助计算各平台黄金投资的收益。</br>
 Gold Calculator,help you to calculate the interest of investment of gold.</br>
 Swift 练习第一作。</br>
 The FIRST Swift project. </br>
@@ -10,7 +10,7 @@ The FIRST Swift project. </br>
 3.输入卖出时预期价格</br>
 4.输入生金率（或称为增金率，若无，请输入0）</br>
 5.输入买进费率（若无，请输入0）</br>
-6.输入卖出费率若无，请输入0</br>
+6.输入卖出费率（若无，请输入0）</br>
 ### 输出
 1.购买所需本金</br>
 2.收益（已扣除手续费）</br>
