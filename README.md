@@ -1,6 +1,8 @@
 # GoldCalculator
-黄金计算器，帮助计算各品台黄金投资的收益。Gold Calculator,help you to calculate the interest of investment of gold.</br>
-Swift 练习第一作。The FIRST Swift project. </br>
+黄金计算器，帮助计算各品台黄金投资的收益。</br>
+Gold Calculator,help you to calculate the interest of investment of gold.</br>
+Swift 练习第一作。</br>
+The FIRST Swift project. </br>
 ## 使用说明 Introduction
 ### 步骤
 1.输入购买时的黄金价格</br>
