@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		05FCE8171F8DD40D00A1D135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FCE8161F8DD40D00A1D135 /* AppDelegate.swift */; };
-		05FCE8191F8DD40D00A1D135 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FCE8181F8DD40D00A1D135 /* ViewController.swift */; };
 		05FCE81C1F8DD40D00A1D135 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05FCE81A1F8DD40D00A1D135 /* Main.storyboard */; };
 		05FCE81E1F8DD40D00A1D135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05FCE81D1F8DD40D00A1D135 /* Assets.xcassets */; };
 		05FCE8211F8DD40D00A1D135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05FCE81F1F8DD40D00A1D135 /* LaunchScreen.storyboard */; };
 		05FCE82C1F8DD40D00A1D135 /* GoldCalcutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FCE82B1F8DD40D00A1D135 /* GoldCalcutorTests.swift */; };
 		05FCE8371F8DD40D00A1D135 /* GoldCalcutorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FCE8361F8DD40D00A1D135 /* GoldCalcutorUITests.swift */; };
 		05FCE84B1F8DE30A00A1D135 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FCE84A1F8DE30A00A1D135 /* CalculatorModel.swift */; };
+		05FCE84F1F8F0CD400A1D135 /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FCE84E1F8F0CD400A1D135 /* WKWebViewController.swift */; };
+		05FCE8521F8F11C600A1D135 /* HTML5 in Resources */ = {isa = PBXBuildFile; fileRef = 05FCE8511F8F118200A1D135 /* HTML5 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,6 @@
 /* Begin PBXFileReference section */
 		05FCE8131F8DD40D00A1D135 /* GoldCalcutor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldCalcutor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05FCE8161F8DD40D00A1D135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		05FCE8181F8DD40D00A1D135 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		05FCE81B1F8DD40D00A1D135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05FCE81D1F8DD40D00A1D135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05FCE8201F8DD40D00A1D135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		05FCE8381F8DD40D00A1D135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05FCE84A1F8DE30A00A1D135 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		05FCE84C1F8DE5A100A1D135 /* GoldCalcutor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoldCalcutor-Bridging-Header.h"; sourceTree = "<group>"; };
+		05FCE84E1F8F0CD400A1D135 /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
+		05FCE8511F8F118200A1D135 /* HTML5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML5; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +102,9 @@
 		05FCE8151F8DD40D00A1D135 /* GoldCalcutor */ = {
 			isa = PBXGroup;
 			children = (
+				05FCE8511F8F118200A1D135 /* HTML5 */,
 				05FCE8161F8DD40D00A1D135 /* AppDelegate.swift */,
-				05FCE8181F8DD40D00A1D135 /* ViewController.swift */,
+				05FCE84E1F8F0CD400A1D135 /* WKWebViewController.swift */,
 				05FCE84A1F8DE30A00A1D135 /* CalculatorModel.swift */,
 				05FCE84C1F8DE5A100A1D135 /* GoldCalcutor-Bridging-Header.h */,
 				05FCE81A1F8DD40D00A1D135 /* Main.storyboard */,
@@ -238,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FCE8521F8F11C600A1D135 /* HTML5 in Resources */,
 				05FCE8211F8DD40D00A1D135 /* LaunchScreen.storyboard in Resources */,
 				05FCE81E1F8DD40D00A1D135 /* Assets.xcassets in Resources */,
 				05FCE81C1F8DD40D00A1D135 /* Main.storyboard in Resources */,
@@ -265,9 +269,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05FCE8191F8DD40D00A1D135 /* ViewController.swift in Sources */,
 				05FCE8171F8DD40D00A1D135 /* AppDelegate.swift in Sources */,
 				05FCE84B1F8DE30A00A1D135 /* CalculatorModel.swift in Sources */,
+				05FCE84F1F8F0CD400A1D135 /* WKWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

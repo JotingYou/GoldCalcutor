@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>金融计算器</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/amazeui.min.css">
+<style>
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="col-sm-12 column">
+        <div class="page-header hidden-sm hidden-xs">
+            <h1>
+                
+                金融计算器 <small>Designed by <a href="https://github.com/JotingYou/GoldCalcutor" style="text-decoration:none;">JotingYou</a></small>
+                
+            </h1>
+            
+        </div>
+        <div class = "col-sm-12 column">
+            <h2 class="am-titlebar-title ">
+                计算器
+            </h2>
+            <div>
+                <form role="form" id="submitform" method="post">
+                    <div class="form-group">
+                        <label for="organization-tel">原价(元/份)</label><span style="color:red">*</span>
+                        <input type="number" class="form-control" id="originPrice"  name="originPrice"  placeholder="请输入购买时的价格(元/份)" required step="0.0001">
+                    </div>
+                    <div class="form-group">
+                        <label for="organization-tel">数量(份)</label><span style="color:red">*</span>
+                        <input type="number" class="form-control" id="amount"  name="amount"  placeholder="请输入想购买的数量(份)" required step="0.0001">
+                            </div>
+                    <div>
+                    <div class="form-group">
+                        <label for="organization-tel">期望价(元/份)</label><span style="color:red">*</span>
+                        <input type="number" class="form-control" id="finalPrice"  name="finalPrice"  placeholder="请输入预期卖出的价格(元/份)" required step="0.0001">
+                    </div>
+                    <div class="form-group">
+                        <label for="organization-tel">生金率(%)</label>
+                        <input type="number" class="form-control" id="increaseRate"  name="increaseRate"  placeholder="请输入赠送的数量比例(%)，若无，请输入0(%)" required step="0.0001" value ="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="organization-tel">买进费率(%)</label>
+                        <input type="number" class="form-control" id="buyFee"  name="buyFee"  placeholder="请输入购买时的手续费(%)" required step="0.0001" value ="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="organization-tel">卖出费率(%)</label>
+                        <input type="number" class="form-control" id="saleFee"  name="saleFee"  placeholder="请输入卖出时的手续费(%)" required step="0.0001" value ="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="organization-tel">投资时长(天)</label>
+                        <input type="number" class="form-control" id="time"  name="time"  placeholder="请输入预期投资时长(天)" required "0.1" value ="365">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info btn-primary">计算</button>
+                        <button href="" type="reset" class="btn btn-default  " style="float:right">重置</button>
+                        <br>
+                        <i style="font-size:smaller">
+                            <strong >注意：</strong>
+                            带有
+                            <span style="color:red">*</span>项必须填写
+                        </i>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <hr />
+        <div class="col-md-12 column">
+            <h2 class="am-titlebar-title ">
+                计算结果
+            </h2>
+            <div>
+                <label>本金: </label>
+                <strong id="principal">0</strong><span> 元   </span>
+                <br />
+                <label>收益: </label>
+                <strong id = "income">0</strong><span> 元   </span>
+                <label>收益率:</label>
+                <strong id = "incomeRate" >0</strong><span> %</span>
+                <br />
+                <label>年化收益:</label>
+                <strong id = "yearIncome" >0</strong><span> 元   </span>
+                <label>年化收益率:</label>
+                <strong id = "yearRate" >0</strong><span> %</span>
+            </div>
+        </div>
+        <div class="row clearfix" id="footer">
+            <div class="col-md-12 column">
+                <div class="footer">
+                    <hr />
+                    
+                    <p class="text-center muted" style="color:grey"><small>
+                        Copy Right©JotingYou <a href="https://github.com/JotingYou/GoldCalcutor" style="text-decoration:none;"><strong>Github.com</strong></a> All Rights Reserved.</small>
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+      $("form").submit(function(){
+                       var message = {"method":"submit",originSinglePrice: $("#originPrice").val(), amount: $("#amount").val(), finalSinglePrice:$("#finalPrice").val(), increaseRate: $("#increaseRate").val(),buyRate:$("#buyFee").val(),saleRate:$("#saleFee").val(),time:$("#time").val()};
+           window.webkit.messageHandlers.interOp.postMessage(message);
+                       return false;
+       });
+    });
+    function calcuteResult(result){
+        var message = JSON.parse(result);
+        $("#principal").text(message["principal"]);
+        $("#income").text(message["income"]);
+        $("#incomeRate").text(message["incomeRate"]);
+        $("#yearIncome").text(message["yearIncome"]);
+        $("#yearRate").text(message["yearRate"]);
+    }
+</script>
+</body>
+</html>
+
+
+
+
