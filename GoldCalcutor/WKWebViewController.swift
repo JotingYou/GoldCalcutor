@@ -13,6 +13,7 @@ class WKWebViewController: UIViewController,WKScriptMessageHandler,WKNavigationD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //网页路径
         let path = Bundle.main.path(forResource: "index", ofType: ".html",
                                     inDirectory: "HTML5")
         let url = URL(fileURLWithPath:path!)
@@ -38,26 +39,37 @@ class WKWebViewController: UIViewController,WKScriptMessageHandler,WKNavigationD
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print(message.body)
+ //       print(message.body)
+        //将接收的数据转为字典
         let sentData = message.body as! Dictionary<String,String>
         if (sentData["method"] == "submit") {
+            //创建计算器
             let calculator = CalculatorModel(originSinglePrice: (sentData["originSinglePrice"]! as NSString).floatValue, amount: (sentData["amount"]! as NSString).floatValue, finalSinglePrice: (sentData["finalSinglePrice"]! as NSString).floatValue, increaseRate: (sentData["increaseRate"]! as NSString).floatValue,buyRate:(sentData["buyRate"]! as NSString).floatValue,saleRate:(sentData["saleRate"]! as NSString).floatValue,time:(sentData["time"]! as NSString).integerValue);
+            //生成返回数据
             let returnMessage:Dictionary<String,String> = ["income":String(calculator.calculateInterest()),"incomeRate":String(calculator.calculateRate()),"principal":String(calculator.calculatePrincipal()),"yearIncome":String(calculator.calculateYearInterset()),"yearRate":String(calculator.calculateYearRate())];
-            print(returnMessage)
+//            print(returnMessage)
+            //将数据转为JSON
             let jsonData = try! JSONSerialization.data(withJSONObject: returnMessage, options: [])
             let jsonString = String(data: jsonData, encoding: String.Encoding.utf8)!
+            //创建弹出窗口信息
             let alertMessage = "本金: " + returnMessage["principal"]! + "元\n" + "收益: " + returnMessage["income"]! + "元\t" + "收益率: " + returnMessage["incomeRate"]! + "%\n" + "年化收益: " +  returnMessage["yearIncome"]! + "元\t" + "年化收益率: " + returnMessage["yearRate"]! + "%";
-            
-            self.wkWebView!.evaluateJavaScript("calcuteResult('\(jsonString)')", completionHandler: { (Any, Error) in
-                let alertViewController = UIAlertController(title:"计算结果",message:alertMessage,preferredStyle:.alert);
-                let cancelAlert = UIAlertAction(title:"知了",style:.cancel,handler:nil);
-                alertViewController.addAction(cancelAlert);
+            //弹出提醒框
+            let alertViewController = UIAlertController(title:"计算结果",message:alertMessage,preferredStyle:.alert);
+            let cancelAlert = UIAlertAction(title:"知了",style:.cancel,handler:nil);
+            alertViewController.addAction(cancelAlert);
+            DispatchQueue.main.async {
                 self.present(alertViewController, animated: true, completion: nil)
-            })
+            }
+
+            //调用JS
+            self.wkWebView!.evaluateJavaScript("calcuteResult('\(jsonString)')", completionHandler: nil)
         }
     }
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
-        wkWebView?.reload();
+        //当网页崩溃时重新加载
+        DispatchQueue.main.async {
+            self.wkWebView?.reload();
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
