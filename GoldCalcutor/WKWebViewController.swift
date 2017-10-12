@@ -8,7 +8,7 @@
 
 import UIKit
 import WebKit
-class WKWebViewController: UIViewController,WKScriptMessageHandler {
+class WKWebViewController: UIViewController,WKScriptMessageHandler,WKNavigationDelegate {
     var wkWebView:WKWebView?;
 
     override func viewDidLoad() {
@@ -28,6 +28,8 @@ class WKWebViewController: UIViewController,WKScriptMessageHandler {
         wkWebView = WKWebView(frame:frame, configuration: theConfiguration)
         //禁用页面在最顶端时下拉拖动效果
         wkWebView!.scrollView.bounces = false
+        //右滑手势
+        wkWebView!.allowsBackForwardNavigationGestures = true;
         //加载页面
         wkWebView!.load(request)
         self.view.addSubview(wkWebView!)
@@ -54,7 +56,9 @@ class WKWebViewController: UIViewController,WKScriptMessageHandler {
             })
         }
     }
-    
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        wkWebView?.reload();
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
