@@ -18,10 +18,10 @@ class CalculatorModel: NSObject {
     var time:Int;
     
     func calculateRate() -> Float {
-        return ((finalSinglePrice * amount * (1+increaseRate/100.0) - buyRate/100 * originSinglePrice * amount - saleRate/100 * finalSinglePrice * amount * (1+increaseRate/100.0))/(originSinglePrice * amount) - 1)*100;
+        return ((finalSinglePrice * amount * (1+increaseRate) - buyRate * originSinglePrice * amount - saleRate * finalSinglePrice * amount * (1+increaseRate))/(originSinglePrice * amount) - 1)*100;
     }
     func calculateInterest() -> Float {
-        return finalSinglePrice * amount * (1+increaseRate/100.0) - buyRate/100 * originSinglePrice * amount - saleRate/100 * finalSinglePrice * amount * (1+increaseRate/100.0) - originSinglePrice * amount;
+        return finalSinglePrice * amount * (1+increaseRate) - buyRate * originSinglePrice * amount - saleRate * finalSinglePrice * amount * (1+increaseRate) - originSinglePrice * amount;
     }
     func calculatePrincipal() -> Float {
         return originSinglePrice * amount;
@@ -30,15 +30,15 @@ class CalculatorModel: NSObject {
         return (self.calculateYearInterset() / (originSinglePrice * amount) * 100);
     }
     func calculateYearInterset() -> Float {
-        let yearInterest = Float(365/time) * (finalSinglePrice * amount * (1+increaseRate/100.0) - originSinglePrice * amount) - buyRate/100 * originSinglePrice * amount - (Float(365/time) * (finalSinglePrice * amount * (1+increaseRate/100.0) - originSinglePrice * amount) + originSinglePrice * amount) * saleRate / 100;//年化收益 = 年化收益总额-购买费率-卖出费率
+        let yearInterest = Float(365/time) * (finalSinglePrice * amount * (1+increaseRate) - originSinglePrice * amount) - buyRate * originSinglePrice * amount - (Float(365/time) * (finalSinglePrice * amount * (1+increaseRate) - originSinglePrice * amount) + originSinglePrice * amount) * saleRate;//年化收益 = 年化收益总额-购买费率-卖出费率
         return yearInterest;
     }; init(originSinglePrice:Float,amount:Float,finalSinglePrice:Float,increaseRate:Float,buyRate:Float,saleRate:Float,time:Int) {
         self.originSinglePrice = originSinglePrice;
         self.finalSinglePrice = finalSinglePrice;
         self.amount = amount;
-        self.increaseRate = increaseRate;
-        self.buyRate = buyRate;
-        self.saleRate = saleRate;
+        self.increaseRate = increaseRate * Float( time / 365 ) / 100;
+        self.buyRate = buyRate / 100;
+        self.saleRate = saleRate / 100;
         self.time = time;
     }
 }
