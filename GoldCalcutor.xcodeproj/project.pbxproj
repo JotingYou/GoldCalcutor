@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0532A63D205A059F00B44CE4 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0532A63C205A059F00B44CE4 /* MasterViewController.swift */; };
 		05FCE8171F8DD40D00A1D135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FCE8161F8DD40D00A1D135 /* AppDelegate.swift */; };
 		05FCE81C1F8DD40D00A1D135 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05FCE81A1F8DD40D00A1D135 /* Main.storyboard */; };
 		05FCE81E1F8DD40D00A1D135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05FCE81D1F8DD40D00A1D135 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0532A63C205A059F00B44CE4 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		05FCE8131F8DD40D00A1D135 /* GoldCalcutor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldCalcutor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05FCE8161F8DD40D00A1D135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05FCE81B1F8DD40D00A1D135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				05FCE81D1F8DD40D00A1D135 /* Assets.xcassets */,
 				05FCE81F1F8DD40D00A1D135 /* LaunchScreen.storyboard */,
 				05FCE8221F8DD40D00A1D135 /* Info.plist */,
+				0532A63C205A059F00B44CE4 /* MasterViewController.swift */,
 			);
 			path = GoldCalcutor;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0532A63D205A059F00B44CE4 /* MasterViewController.swift in Sources */,
 				05FCE8171F8DD40D00A1D135 /* AppDelegate.swift in Sources */,
 				05FCE84B1F8DE30A00A1D135 /* CalculatorModel.swift in Sources */,
 				05FCE84F1F8F0CD400A1D135 /* WKWebViewController.swift in Sources */,

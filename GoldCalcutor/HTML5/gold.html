@@ -115,11 +115,11 @@
     $(function(){
       $("form").submit(function(){
                        var message = {"method":"submit",originSinglePrice: $("#originPrice").val(), amount: $("#amount").val(), finalSinglePrice:$("#finalPrice").val(), increaseRate: $("#increaseRate").val(),buyRate:$("#buyFee").val(),saleRate:$("#saleFee").val(),time:$("#time").val()};
-           window.webkit.messageHandlers.interOp.postMessage(message);
+           window.webkit.messageHandlers.interGold.postMessage(message);
                        return false;
        });
     });
-    function calcuteResult(result){
+    function showResult(result){
         var message = JSON.parse(result);
         $("#principal").text(message["principal"]);
         $("#income").text(message["income"]);

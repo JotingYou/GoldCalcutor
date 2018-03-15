@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>金融计算器</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/amazeui.min.css">
+<style>
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="col-sm-12 column">
+        <div class="page-header hidden-sm hidden-xs">
+            <h1>
+                
+                金融计算器 <small>Designed by <a href="https://github.com/JotingYou/GoldCalcutor" style="text-decoration:none;">JotingYou</a></small>
+                
+            </h1>
+            
+        </div>
+        <div class = "col-sm-12 column">
+            <div>
+                <form role="form" id="submitform" method="post">
+                    <div class="form-group">
+                        <label>税前工资(元)</label><span style="color:red">*</span>
+                        <input type="number" class="form-control" id="preTax"  name="preTax"  placeholder="输入0，即可通过实发工资计算税前工资" required step="0.0001">
+                    </div>
+                    <div class="form-group">
+                        <h3>五险一金</h3>
+                        <div class="form-group">
+                            <label>医疗保险(元)</label>
+                            <input type="number" class="form-control" id="medicInsurance"  name="medicInsurance"  placeholder="请输入医疗保险(元)" required step="0.0001" value ="0">
+                                </div>
+                        
+                        <div class="form-group">
+                            <label>养老保险(元)</label>
+                            <input type="number" class="form-control" id="eldInsurance"  name="eldInsurance"  placeholder="请输入养老保险(元)" required step="0.0001" value ="0">
+                        </div>
+                        <div class="form-group">
+                            <label>失业保险(元)</label>
+                            <input type="number" class="form-control" id="workInsurance"  name="workInsurance"  placeholder="请输入失业保险(元)" required step="0.0001" value ="0">
+                        </div>
+                        <div class="form-group">
+                            <label>工伤保险(元)</label>
+                            <input type="number" class="form-control" id="disabledInsurance"  name="disabledInsurance"  placeholder="请输入工伤保险(元)" required step="0.0001" value ="0">
+                        </div>
+                        <div class="form-group">
+                            <label>生育保险(元)</label>
+                            <input type="number" class="form-control" id="babyInsurance"  name="babyInsurance"  placeholder="请输入生育保险(元)" required step="0.0001" value ="0">
+                        </div>
+                        <div class="form-group">
+                            <label>住房公积金(元)</label>
+                            <input type="number" class="form-control" id="houseFee"  name="houseFee"  placeholder="请输入住房公积金(元)" step="0.0001" value ="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>实发工资(元)</label>
+                        <input type="number" class="form-control" id="income"  name="income"  placeholder="(可选)请输入税后收入(元)" required step="0.0001" value = "0">
+                            </div>
+                    <div>
+                        <button type="submit" class="btn btn-info btn-primary">计算</button>
+                        <button href="" type="reset" class="btn btn-default  " style="float:right">重置</button>
+                        <br>
+                        <i style="font-size:smaller">
+                            <strong >注意：</strong>
+                            带有
+                            <span style="color:red">*</span>项必须填写
+                        </i>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <br >
+        <hr />
+        <div class="col-md-12 column">
+            <h2 class="am-titlebar-title ">
+                计算结果
+            </h2>
+            <div>
+                <label>税前工资: </label>
+                <strong id="preTaxResult">0</strong><span> 元   </span>
+                <br />
+                <label>五险一金: </label>
+                <strong id = "insurance">0</strong><span> 元   </span>
+                <br />
+                <label>个人所得税:</label>
+                <strong id = "personalTax" >0</strong><span>元</span>
+                <label>税率:</label>
+                <strong id = "aveRate" >0</strong><span>%</span>
+                <br />
+                <label>实发工资:</label>
+                <strong id = "incomeResult" >0</strong><span> 元   </span>
+            </div>
+        </div>
+        <div class="row clearfix" id="footer">
+            <div class="col-md-12 column">
+                <div class="footer">
+                    <hr />
+                    
+                    <p class="text-center muted" style="color:grey"><small>
+                        Copy Right©JotingYou <a href="https://github.com/JotingYou/GoldCalcutor" style="text-decoration:none;"><strong>Github.com</strong></a> All Rights Reserved.</small>
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+      $("form").submit(function(){
+                       var message = {"method":"submit",preTax: $("#preTax").val(), medicInsurance: $("#medicInsurance").val(), eldInsurance:$("#eldInsurance").val(), workInsurance: $("#workInsurance").val(),disabledInsurance:$("#disabledInsurance").val(),babyInsurance:$("#babyInsurance").val(),houseFee:$("#houseFee").val(),income:$("#income").val()};
+           window.webkit.messageHandlers.interSalary.postMessage(message);
+                       return false;
+       });
+    });
+    function showResult(result){
+        var message = JSON.parse(result);
+        $("#personalTax").text(message["personalTax"]);
+        $("tax").text(message["personalTax"]);
+        $("#incomeResult").text(message["income"]);
+        $("#preTaxResult").text(message["preTax"]);
+        $("#aveRate").text(message["aveRate"]);
+        $("#insurance").text(message["insurance"]);
+    }
+</script>
+</body>
+</html>
+
+
+
+
