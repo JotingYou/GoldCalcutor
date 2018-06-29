@@ -2,7 +2,7 @@
 //  GoldCalcutorUITests.swift
 //  GoldCalcutorUITests
 //
-//  Created by Zhangguo Huang on 2017/10/11.
+//  Created by Joting on 2017/10/11.
 //  Copyright © 2017年 Joting. All rights reserved.
 //
 

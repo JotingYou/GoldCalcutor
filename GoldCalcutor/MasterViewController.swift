@@ -2,7 +2,7 @@
 //  MasterViewController.swift
 //  GoldCalcutor
 //
-//  Created by Zhangguo Huang on 2018/3/15.
+//  Created by Joting on 2018/3/15.
 //  Copyright © 2018年 Joting. All rights reserved.
 //
 

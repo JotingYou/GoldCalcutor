@@ -2,7 +2,7 @@
 //  WKWebViewController.swift
 //  GoldCalcutor
 //
-//  Created by Zhangguo Huang on 2017/10/12.
+//  Created by Joting on 2017/10/12.
 //  Copyright © 2017年 Joting. All rights reserved.
 //
 
